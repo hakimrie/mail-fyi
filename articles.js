@@ -29,11 +29,13 @@ function processInbox() {
         var message = messages[0]; // we only care for the first message
         Logger.log(message.getFrom() + " subject: "+ message.getSubject())
         if (message.getSubject().trim() == "fyi" && message.getFrom().indexOf("soegi") > 0){
-          var hrefs = /href="([^\'\"]+)/g.exec(message.getBody());
-          Logger.log(hrefs);
+//          Logger.log(message.getFrom() + " subject: "+ message.getSubject())
+//          Logger.log(message.getBody());
+//          var hrefs = /href="([^\'\"]+)/g.exec(message.getBody());
+//          Logger.log(hrefs);
           var date = message.getDate()
           // post to google sites
-          var fyi = "<strong>" + date.toLocaleDateString() + "</strong><br/>"+message.getBody();
+          var fyi = "<h4>" + date.toLocaleDateString() + "</h4>"+message.getBody();
          addArticlesToPage(fyi);
         }
       }else{ // outdated message
